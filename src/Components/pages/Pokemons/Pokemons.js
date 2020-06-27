@@ -1,12 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import Search from './Search';
+import PokemonsList from './PokemonsList';
 
 function Pokemons(props) {
   return (
     <div>
       <h1>Pokemons</h1>
 
-      <p><Link to="/pokemon">Pokemon</Link></p>
+      <Search />
+      <PokemonsList />
     </div>
   );
 }
