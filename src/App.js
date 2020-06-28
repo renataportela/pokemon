@@ -6,19 +6,22 @@ import {
 } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 
-import routes from 'Routes';
-import client from 'GraphQL/apolloClient';
+import routes from 'Config/routes';
+import client from 'Config/apolloClient';
+import Layout from 'Components/layout/Layout';
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Switch>
-        {routes.map(({ path, exact, component }) => (
-          <Route key={path} path={path} exact={exact} children={component} />
-        ))}
-        </Switch>
-      </Router>
+      <Layout>
+        <Router>
+          <Switch>
+          {routes.map(({ path, exact, component }) => (
+            <Route key={path} path={path} exact={exact} children={component} />
+          ))}
+          </Switch>
+        </Router>
+      </Layout>
     </ApolloProvider>
   );
 }
