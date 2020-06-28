@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams, withRouter } from 'react-router-dom';
 
 import { usePokemon } from 'Components/data';
-import useSetPokemon from './useSetPokemon';
+import useUpdatePokemon from './useUpdatePokemon';
 
 function EditPokemon(props) {
   const { pokemonId } = useParams();
   const { pokemon, loading, error } = usePokemon(pokemonId); 
-  const { setPokemon } = useSetPokemon(pokemonId);
+  const { updatePokemon } = useUpdatePokemon(pokemonId);
+  const [ form, setForm ] = useState({
+    name: '',
+    image: '',
+  });
 
-  const handleSave = () => {
-    setPokemon({
-      id: pokemonId,
-      name: 'Teste',
-    })
+  useEffect(() => {
+    if (pokemon && pokemon.id) {
+      setForm(pokemon);
+    }
+  }, [pokemon]);
+
+  const handleSave = e => {
+    e.preventDefault();
+    updatePokemon(form);
+  }
+
+  const handleChange = e => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   }
 
   if (loading) return 'Carregando...';
@@ -25,10 +40,16 @@ function EditPokemon(props) {
 
       <h2>{pokemon.name}</h2>
 
-      <button onClick={handleSave}>Salvar</button>
+      <form onSubmit={handleSave}>
 
-      <p><Link to="/">Pokemons</Link></p>
-      <p><Link to="/pokemon">Pokemon</Link></p>
+        <input placeholder="Nome" name="name" value={form.name} onChange={handleChange} /><br />
+        <input placeholder="Imagem (URL)" name="image" value={form.image} onChange={handleChange} /><br />
+
+        <button type="submit">Salvar</button>
+      </form>
+
+      <p><Link to="/">Home</Link></p>
+      <p><Link to={`/pokemon/${pokemonId}`}>Voltar</Link></p>
     </div>
   );
 }

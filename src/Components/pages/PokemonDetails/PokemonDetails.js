@@ -22,11 +22,11 @@ function PokemonDetails() {
       </p>
 
       {!!pokemon.attacks && !!pokemon.attacks.fast && pokemon.attacks.fast.map(attack => (
-        <p>Fast: {attack.name} - {attack.type} - {attack.damage}</p>
+        <p key={attack.name}>Fast: {attack.name} - {attack.type} - {attack.damage}</p>
       ))}
 
       {!!pokemon.attacks && !!pokemon.attacks.special && pokemon.attacks.special.map(attack => (
-        <p>Special: {attack.name} - {attack.type} - {attack.damage}</p>
+        <p key={attack.name}>Special: {attack.name} - {attack.type} - {attack.damage}</p>
       ))}
 
       <p><Link to={`/pokemon/${pokemonId}/editar`}>Editar</Link></p>

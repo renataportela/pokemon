@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import { setSearchFor } from 'Components/pages/Pokemons/Search/useSetSearchFor';
-import { updatePokemon } from 'Components/pages/EditPokemon/useSetPokemon';
+import { updatePokemon } from 'Components/pages/EditPokemon/useUpdatePokemon';
 
 export const initialData = {
   searchFor: '',

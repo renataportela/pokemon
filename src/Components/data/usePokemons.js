@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 function usePokemons(searchFor) {
-  const { loading, error, data } = useQuery(GET_POKEMONS);
+  const { loading, error, data } = useQuery(POKEMONS_QUERY);
   const pokemons = !!data ? data.pokemons : [];
 
   return { 
@@ -18,8 +18,8 @@ function filterPokemons(pokemons, searchFor) {
   return pokemons.filter(pokemon => pokemon.name.match(reg));
 }
 
-export const GET_POKEMONS = gql`
-  query {
+export const POKEMONS_QUERY = gql`
+  query pokemons {
     pokemons(first: 151) {
       id
       name
