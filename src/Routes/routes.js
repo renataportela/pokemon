@@ -4,12 +4,12 @@ import EditPokemon from 'Components/pages/EditPokemon';
 
 export default [
   { 
-    path: '/pokemon/:id', 
+    path: '/pokemon/:pokemonId', 
     component: Pokemon,
     exact: true,
   },
   {
-    path: '/pokemon/:id/editar',
+    path: '/pokemon/:pokemonId/editar',
     component: EditPokemon,
     exact: true,
   },

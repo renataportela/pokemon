@@ -1,12 +1,11 @@
 import React from 'react';
 
-import useSearchFor from 'Components/pages/Pokemons/useSearchFor';
-import usePokemonsQuery from './usePokemonsQuery';
+import { usePokemons, useSearchFor } from 'Components/data';
 import PokemonCard from './PokemonCard';
 
 function PokemonsList() {
   const { search } = useSearchFor();
-  const { pokemons, loading, error } = usePokemonsQuery(search);
+  const { pokemons, loading, error } = usePokemons(search);
 
   if (loading) return 'Carregando...';
   if (error) return `Ocorreu um erro: ${error}`;
@@ -16,7 +15,6 @@ function PokemonsList() {
       {pokemons.map(pokemon => (
         <PokemonCard key={pokemon.id} pokemon={pokemon} />
       ))}
-      
     </div>
   );
 }

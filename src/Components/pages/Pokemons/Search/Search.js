@@ -1,9 +1,11 @@
 import React from 'react';
 
-import useSearchFor from 'Components/pages/Pokemons/useSearchFor';
+import { useSearchFor } from 'Components/data';
+import useSetSearchFor from './useSetSearchFor';
 
 function Search() {
-  const { search, setSearch } = useSearchFor();
+  const { search } = useSearchFor();
+  const { setSearch } = useSetSearchFor();
   const handleChange = e => setSearch(e.target.value);
 
   return (
