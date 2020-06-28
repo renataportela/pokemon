@@ -11,6 +11,8 @@ function EditPokemon(props) {
   const [ form, setForm ] = useState({
     name: '',
     image: '',
+    types: [],
+    attacks: []
   });
 
   useEffect(() => {
@@ -31,6 +33,30 @@ function EditPokemon(props) {
     });
   }
 
+  const handleChangeType = currentType => e => {
+    const types = [...form.types];
+    const index = types.findIndex(type => type === currentType);
+    types[index] = e.target.value;
+    setForm({
+      ...form,
+      types
+    });
+  }
+
+  const handleDeleteType = deletedType => () => {
+    setForm({
+      ...form,
+      types: form.types.filter(type => type !== deletedType)
+    });
+  }
+
+  const handleAddType = () => {
+    setForm({
+      ...form,
+      types: [...form.types, '']
+    });
+  }
+
   if (loading) return 'Carregando...';
   if (error) return `Ocorreu um erro: ${error}`;
 
@@ -42,8 +68,16 @@ function EditPokemon(props) {
 
       <form onSubmit={handleSave}>
 
-        <input placeholder="Nome" name="name" value={form.name} onChange={handleChange} /><br />
-        <input placeholder="Imagem (URL)" name="image" value={form.image} onChange={handleChange} /><br />
+        <input type="text" placeholder="Nome" name="name" value={form.name} onChange={handleChange} /><br />
+        <input type="text" placeholder="Imagem (URL)" name="image" value={form.image} onChange={handleChange} /><br />
+
+        {form.types.map((type, index) => (
+          <div key={index}>
+            <input type="text" placeholder="Tipo" value={type} onChange={handleChangeType(type)} /> 
+            <button onClick={handleDeleteType(type)}>excluir</button><br />
+          </div>
+        ))}
+        <button onClick={handleAddType}>Incluir Tipo</button><br />
 
         <button type="submit">Salvar</button>
       </form>
