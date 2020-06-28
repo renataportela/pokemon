@@ -1,11 +1,13 @@
 import React from 'react';
 
+import useSearchFor from 'Components/pages/Pokemons/useSearchFor';
+
 function Search() {
+  const { search, setSearch } = useSearchFor();
+  const handleChange = e => setSearch(e.target.value);
+
   return (
-    <form>
-      <input type="text" value="" />
-      <button>Procurar</button>
-    </form>
+    <input type="text" value={search} onChange={handleChange} />
   );
 }
 

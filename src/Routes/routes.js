@@ -1,15 +1,15 @@
 import Pokemons from 'Components/pages/Pokemons';
-import Pokemon from 'Components/pages/Pokemon';
+import Pokemon from 'Components/pages/PokemonDetails';
 import EditPokemon from 'Components/pages/EditPokemon';
 
 export default [
   { 
-    path: '/pokemon', 
+    path: '/pokemon/:id', 
     component: Pokemon,
     exact: true,
   },
   {
-    path: '/pokemon/editar',
+    path: '/pokemon/:id/editar',
     component: EditPokemon,
     exact: true,
   },
