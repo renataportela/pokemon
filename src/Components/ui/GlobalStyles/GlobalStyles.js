@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: "PT Sans Narrow", Tahoma, Arial;
     font-size: 18px;
     color: #383838;
-    background-color: #f5f5f5;
+    background-color: #fff;
     padding-top: 40px;
   }
 `
