@@ -16,9 +16,8 @@ const client = new ApolloClient({
   uri: 'http://localhost:5000/',
   onError: ({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
-      const { message, locations, path } = graphQLErrors;
       console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+        `[GraphQL error]`, graphQLErrors
       );
     }
     if (networkError) {
