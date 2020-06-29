@@ -11,6 +11,12 @@ function PokemonsList() {
   if (loading) return 'Carregando...';
   if (error) return `Ocorreu um erro: ${error}`;
 
+  if (pokemons.length === 0) {
+    return (
+      <div>Nenhum Pokemon encontrado.</div>
+    );
+  }
+
   return (
     <Row>
       {pokemons.map(pokemon => (

@@ -1,9 +1,14 @@
 import React from 'react';
 
-import { Container } from 'Components/ui';
+import { Container, GlobalStyles } from 'Components/ui';
 
 function Layout({ children }) {
-  return <Container>{children}</Container>
+  return (
+    <Container>
+      <GlobalStyles />
+      {children}
+    </Container>
+  )
 }
 
 export default Layout;
