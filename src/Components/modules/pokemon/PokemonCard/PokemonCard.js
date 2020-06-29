@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import theme from 'Components/styles/theme';
 import { TypeTags } from 'Components/modules/pokemonType';
 import { Heading, Paper } from 'Components/ui';
-import { shadowLg } from 'Components/styles/shadows';
 import CardImage from './CardImage';
 
 function PokemonCard({ pokemon }) {
@@ -30,9 +30,10 @@ const Box = styled(Paper)`
   flex-direction: column;
   justify-content: space-between;
   border-radius: 2px;
+  transition: box-shadow .2s ease-in-out;
 
   :hover {
-    box-shadow: ${shadowLg};
+    box-shadow: ${theme.shadows.lg};
   }
 `;
 
