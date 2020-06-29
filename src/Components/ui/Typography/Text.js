@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-import { resolveColor } from 'Components/styles/helpers';
+import { textBgColors } from 'Components/styles/mixins';
 
 const Text = styled.span(props => {
   return {
-    backgroundColor: resolveColor(props.bgColor),
-    color: resolveColor(props.textColor),
+    ...textBgColors(props),
     fontFamily: props.family,
     fontSize: props.size,
     fontStyle: props.italic ? 'italic' : null,

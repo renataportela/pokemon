@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { resolveColor } from 'Components/styles/helpers';
+import { textBgColors } from 'Components/styles/mixins';
 import {
   shadowXs,
   shadowSm,
@@ -25,8 +26,6 @@ function Paper(
   return (
     <PaperStyle
       ref={ref}
-      $bg={resolveColor(bgColor)}
-      $color={resolveColor(textColor)}
       $border={resolveColor(borderColor)}
       gutter={gutter}
       shadow={shadow}
@@ -46,10 +45,9 @@ const shadows = {
 }
 
 const PaperStyle = styled.div(props => ({
+  ...textBgColors(props),
   position: 'relative',
   boxShadow: props.shadow ? shadows[props.shadow] : null,
-  backgroundColor: props.$bg,
-  color: props.$color,
   padding: props.gutter,
   border: '1px solid ' + props.$border,
 }));

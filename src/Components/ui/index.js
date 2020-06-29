@@ -1,3 +1,4 @@
+export { default as Chip } from './Chip';
 export { default as GlobalStyles } from './GlobalStyles';
 export { default as Input } from './Input';
 export { default as Paper } from './Paper';

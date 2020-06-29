@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { Chip, Flex } from 'Components/ui';
+
 function TypeTags(props) {
   return (
-    <p>
-      {props.types.map(typeName => <span key={typeName}>{typeName} - </span>)}
-    </p>
+    <Flex gap="8px" marginBottom="15px">
+      {props.types.map(typeName => <Chip key={typeName}>{typeName}</Chip>)}
+    </Flex>
   );
 }
 
