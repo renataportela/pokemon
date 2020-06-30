@@ -46,6 +46,8 @@ export default {
     disabled: colors.grey300,
     disabledText: colors.grey500,
     placeholder: colors.blueGrey600,
+    link: colors.blue500,
+    linkHover: colors.tealA700,
     input: {
       border: {
         disabled: colors.grey100,

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, useParams, withRouter } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 
 import { usePokemonQuery } from 'Components/modules/pokemon';
 import { AttacksList } from 'Components/modules/attack';
 import { TypeTags } from 'Components/modules/pokemonType';
 import { PokemonImage } from 'Components/modules/pokemon';
-import { Col, Button, Flex, Heading, Row } from 'Components/ui';
+import { Col, Button, Heading, Link, Row } from 'Components/ui';
 
 function PokemonDetails() {
   const { pokemonId } = useParams();
@@ -35,7 +35,7 @@ function PokemonDetails() {
         
       </Row>
 
-      <p><Link to="/">Voltar</Link></p>
+      <Link to="/">Voltar</Link>
     </>
   );
 }
