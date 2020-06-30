@@ -3,11 +3,9 @@ import styled from 'styled-components';
 
 import Text from './Text';
 
-function Heading({ children, size, ...props }) {
+function Heading({ size, ...props }) {
   return (
-    <HeadingStyle as={'h'+size} fontSize={size} {...props}>
-      {children}
-    </HeadingStyle>
+    <HeadingStyle as={'h'+size} fontSize={size} {...props} />
   )
 }
 

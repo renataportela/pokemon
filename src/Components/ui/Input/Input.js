@@ -19,7 +19,7 @@ function Input({
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
-  const handleChange = e => onChange(e.target.value);
+  const handleChange = e => onChange(e.target.value, e);
 
   return (
     <ElementStyle

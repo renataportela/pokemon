@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Button, Col, Flex, FormField, Heading, Input, Link, Row } from 'Components/ui';
+
 function EditTypes({ types, onUpdate }) {
 
   const handleChange = currentType => e => {
@@ -15,7 +17,7 @@ function EditTypes({ types, onUpdate }) {
 
   return (
     <>
-      <h3>Tipos</h3>
+      <Heading size="3">Tipos</Heading>
 
       {types && types.map((type, index) => (
         <div key={index}>

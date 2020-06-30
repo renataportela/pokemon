@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import theme from 'Components/styles/theme';
 
 function RouteLink(props) {
-  return <LinkStyled {...props} />
+  return <LinkStyled to={props.to} children={props.children} />
 }
 
 const LinkStyled = styled(Link)`

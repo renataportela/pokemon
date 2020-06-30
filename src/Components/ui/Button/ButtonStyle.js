@@ -22,7 +22,7 @@ const ROUND_SIZES = {
 const buttonVariant = props => {
   let styles = {
     backgroundColor: theme.colors.button.primary.color2,
-    background: `linear-gradient(90deg, ${theme.colors.button.primary.color1} 8%, ${theme.colors.button.primary.color2} 55%)`,
+    background: `linear-gradient(120deg, ${theme.colors.button.primary.color1} 8%, ${theme.colors.button.primary.color2} 55%)`,
     color: 'white',
     border: 0,
     boxShadow: theme.shadows.md,
@@ -81,7 +81,7 @@ const ButtonStyle = styled(Link).attrs(props => {
   ${props => css`
     font-size: ${theme.fontSizes[props.size]};
     transition: all .2s ease;
-    ${props.round ? roundShape : [`padding: ${props.$padding};`, `border-radius: .5em;`]}
+    ${props.round ? roundShape : [`padding: ${props.$padding};`, `border-radius: .4em;`]}
     ${buttonVariant}
   `}
 `;  

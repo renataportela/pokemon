@@ -3,11 +3,9 @@ import styled from 'styled-components';
 
 import Text from './Text';
 
-function Paragraph({ children, ...props }) {
+function Paragraph(props) {
   return (
-    <PStyle forwardedAs="p" {...props}>
-      {children}
-    </PStyle>
+    <PStyle forwardedAs="p" {...props} />
   )
 }
 
