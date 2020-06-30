@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import theme from 'Components/styles/theme';
+import Flex from './Flex';
 
 function Row({ children, noGutter, ...props }) {
   return (
@@ -12,8 +13,7 @@ function Row({ children, noGutter, ...props }) {
   );
 }
 
-const RowStyles = styled.div`
-  display: flex;
+const RowStyles = styled(Flex)`
   flex-wrap: wrap;
   margin-right: -${theme.gutter.grid};
   margin-left: -${theme.gutter.grid};

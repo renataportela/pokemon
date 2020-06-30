@@ -4,7 +4,8 @@ import { Link, useParams, withRouter } from 'react-router-dom';
 import { usePokemonQuery } from 'Components/modules/pokemon';
 import { AttacksList } from 'Components/modules/attack';
 import { TypeTags } from 'Components/modules/pokemonType';
-import { Col, Button, Row } from 'Components/ui';
+import { PokemonImage } from 'Components/modules/pokemon';
+import { Col, Button, Flex, Heading, Row } from 'Components/ui';
 
 function PokemonDetails() {
   const { pokemonId } = useParams();
@@ -15,15 +16,13 @@ function PokemonDetails() {
 
   return (
     <>
-      <h1>{pokemon.name}</h1>
+      <Heading textAlign="center" size="1">{pokemon.name}</Heading>
 
-      <TypeTags types={pokemon.types} />
+      <TypeTags types={pokemon.types} justify="center" />
 
       <Row>
         <Col xs="12" md="6" lg="4">
-          
-
-          <img src={pokemon.image} alt={`Imagem de ${pokemon.name}`} />
+          <PokemonImage image={pokemon.image} pokemonName={pokemon.name} />
         </Col>
         <Col xs="12" md="6" lg="8">
           {!!pokemon.attacks && <AttacksList kind="Ataques Rápidos" attacks={pokemon.attacks.fast} />}

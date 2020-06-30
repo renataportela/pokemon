@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import theme from 'Components/styles/theme';
 import { TypeTags } from 'Components/modules/pokemonType';
 import { Button, Flex, Heading, Paper } from 'Components/ui';
-import CardImage from './CardImage';
+import PokemonImage from 'Components/modules/pokemon/PokemonImage';
 
 function PokemonCard({ pokemon }) {
   return (
     <Box>
-      <CardImage image={pokemon.image} alt={`Imagem de ${pokemon.name}`} />
+      <PokemonImage image={pokemon.image} pokemonName={pokemon.name} />
 
       <Flex direction="column" alignItems="center" marginBottom="15px">
         <Heading>{pokemon.name}</Heading>

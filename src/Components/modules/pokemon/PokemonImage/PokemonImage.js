@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function CardImage({ alt, image }) {
+function PokemonImage({ pokemonName, image, ...props }) {
   return (
-    <ImageContainer>
-      <Image src={image} alt={alt} />
+    <ImageContainer {...props}>
+      <Image src={image} alt={`Imagem de ${pokemonName}`} />
     </ImageContainer>
   );
 }
@@ -22,4 +22,4 @@ const Image = styled.img`
   margin: 8px 0 15px;
 `;
 
-export default CardImage;
+export default PokemonImage;

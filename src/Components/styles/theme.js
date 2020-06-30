@@ -3,12 +3,16 @@ const colors = {
   grey200: '#eeeeee',
   grey300: '#e0e0e0',
   grey500: '#9e9e9e',
+  grey800: '#424242',
   grey900: '#212121',
 
   blueGrey50: '#eceff1',
   blueGrey100: '#cfd8dc',
+  blueGrey300: '#90a4ae',
   blueGrey500: '#607d8b',
   blueGrey600: '#546e7a',
+  blueGrey800: '#37474f',
+  blueGrey900: '#263238',
 
   red600: '#e53935',
 
@@ -35,7 +39,8 @@ export default {
   },
   colors: {
     bg: '#fff',
-    text: colors.grey900,
+    text: colors.grey800,
+    primary: colors.blue500,
     danger: colors.red600,
     sub: colors.grey300,
     disabled: colors.grey300,
