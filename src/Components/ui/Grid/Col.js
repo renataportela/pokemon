@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import Flex from './Flex';
-import { GUTTER_GRID } from 'Components/styles/spacing';
+import theme from 'Components/styles/theme';
 
 function Col({ children, ...props }) {
   return (
@@ -59,11 +58,11 @@ const md = props => mediaQuery('md', props);
 const lg = props => mediaQuery('lg', props);
 const xl = props => mediaQuery('xl', props);
 
-const ColStyle = styled(Flex)`
+const ColStyle = styled.div`
   position: relative;
   min-height: 1px;
-  padding-right: ${GUTTER_GRID};
-  padding-left: ${GUTTER_GRID};
+  padding-right: ${theme.gutter.grid};
+  padding-left: ${theme.gutter.grid};
   width: auto;
   ${({ col, xs }) =>
     col

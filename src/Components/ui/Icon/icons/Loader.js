@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Svg } from '~/components';
+import { Svg } from 'Components/ui';
 import theme from 'Components/styles/theme';
 
 function LoaderIcon({ children, color, ...props }) {
@@ -31,4 +31,4 @@ LoaderIcon.defaultProps = {
   viewBox: '0 0 512 512',
 }
 
-export default LoaderIcon
+export default LoaderIcon;

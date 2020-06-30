@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import { Svg } from '~/components'
+import { Svg } from 'Components/ui';
 
 function ArrowUpIcon({ children, ...props }) {
   return (
@@ -17,4 +17,4 @@ ArrowUpIcon.defaultProps = {
   viewBox: '0 0 24 24',
 }
 
-export default ArrowUpIcon
+export default ArrowUpIcon;

@@ -1,55 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { resolveColor } from 'Components/styles/helpers';
-import { textBgColors } from 'Components/styles/mixins';
-import {
-  shadowXs,
-  shadowSm,
-  shadowMd,
-  shadowLg,
-  shadowXl,
-} from 'Components/styles/shadows';
+import theme from 'Components/styles/theme';
 
-function Paper(
-  {
-    children,
-    bgColor = 'white',
-    borderColor = 'divider',
-    gutter = '15px',
-    shadow = 'md',
-    textColor,
-    ...props
-  },
-  ref
-) {
+function Paper({ children, gutter = '15px', ...props }, ref) {
   return (
-    <PaperStyle
-      ref={ref}
-      $border={resolveColor(borderColor)}
-      gutter={gutter}
-      shadow={shadow}
-      {...props}
-    >
+    <PaperStyle ref={ref} {...props}>
       {children}
     </PaperStyle>
   )
 }
 
-const shadows = {
-  xs: shadowXs,
-  sm: shadowSm,
-  md: shadowMd,
-  lg: shadowLg,
-  xl: shadowXl,
-}
-
-const PaperStyle = styled.div(props => ({
-  ...textBgColors(props),
-  position: 'relative',
-  boxShadow: props.shadow ? shadows[props.shadow] : null,
-  padding: props.gutter,
-  border: '1px solid ' + props.$border,
-}));
+const PaperStyle = styled.div`
+  position: relative;
+  background-color: ${theme.colors.bg};
+  padding: ${theme.spacing.md};
+  border: ${theme.border.divider}; 
+  box-shadow: ${theme.shadows.sm}; 
+`;
 
 export default React.forwardRef(Paper)

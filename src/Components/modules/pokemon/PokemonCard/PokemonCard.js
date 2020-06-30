@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import theme from 'Components/styles/theme';
 import { TypeTags } from 'Components/modules/pokemonType';
-import { Heading, Paper } from 'Components/ui';
+import { Button, Flex, Heading, Paper } from 'Components/ui';
 import CardImage from './CardImage';
 
 function PokemonCard({ pokemon }) {
@@ -12,13 +11,15 @@ function PokemonCard({ pokemon }) {
     <Box>
       <CardImage image={pokemon.image} alt={`Imagem de ${pokemon.name}`} />
 
-      <div>
+      <Flex direction="column" alignItems="center" marginBottom="15px">
         <Heading>{pokemon.name}</Heading>
 
         <TypeTags types={pokemon.types} />
 
-        <p><Link to={`/pokemon/${pokemon.id}`}>Detalhes</Link></p>
-      </div>
+        <Flex justify="end">
+          <Button label="Detalhes" to={`/pokemon/${pokemon.id}`} />
+        </Flex>
+      </Flex>
     </Box>
   );
 }

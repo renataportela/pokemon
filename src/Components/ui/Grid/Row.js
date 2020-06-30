@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Flex from './Flex';
-import { GUTTER_GRID } from 'Components/styles/spacing';
+import theme from 'Components/styles/theme';
 
 function Row({ children, noGutter, ...props }) {
   return (
@@ -13,11 +12,11 @@ function Row({ children, noGutter, ...props }) {
   );
 }
 
-const RowStyles = styled(Flex)`
+const RowStyles = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-right: -${GUTTER_GRID};
-  margin-left: -${GUTTER_GRID};
+  margin-right: -${theme.gutter.grid};
+  margin-left: -${theme.gutter.grid};
 
   &.no-gutter {
     margin-right: 0;

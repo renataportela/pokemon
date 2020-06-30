@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
+import theme from 'Components/styles/theme';
 import ElementStyle from './ElementStyle';
-import { COLORS } from 'Components/styles/colors';
 
 function Input({
-  isDisabled,
-  hasError,
+  disabled,
+  error,
   left,
   right,
   rows,
@@ -23,16 +23,15 @@ function Input({
 
   return (
     <ElementStyle
-      $hasError={hasError}
-      $isDisabled={isDisabled}
+      $hasError={error}
+      $isDisabled={disabled}
       $isFocused={isFocused}
       left={left}
       right={right}
     >
       <InputStyle
-        $hasError={hasError}
-        disabled={isDisabled}
-        as={!!rows ? 'textarea' : null}
+        $hasError={error}
+        disabled={disabled}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onChange={handleChange}
@@ -54,7 +53,7 @@ const InputStyle = styled.input`
 
   ${({ disabled, $hasError }) => css`
     &::placeholder {
-      color: ${$hasError ? COLORS['danger'] : (disabled ? COLORS['disabledText'] : COLORS['subText'])};
+      color: ${$hasError ? theme.colors.danger : (disabled ? theme.colors.disabledText : theme.colors.placeholder)};
     }
   `}
 `

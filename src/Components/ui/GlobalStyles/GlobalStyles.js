@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
+import theme from 'Components/styles/theme';
+
 const GlobalStyles = createGlobalStyle`
   *,
   *::before,
@@ -20,8 +22,8 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     font-family: "PT Sans Narrow", Tahoma, Arial;
     font-size: 18px;
-    color: #383838;
-    background-color: #fff;
+    color: ${theme.colors.text};
+    background-color: ${theme.colors.bg};
     padding-top: 40px;
   }
 `

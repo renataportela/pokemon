@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { textBgColors } from 'Components/styles/mixins';
+import theme from 'Components/styles/theme';
 
 function Chip({ children, ...props}) {
   return (
@@ -12,8 +12,7 @@ function Chip({ children, ...props}) {
   )
 }
 
-const ChipColors = styled.span(textBgColors);
-const ChipStyle = styled(ChipColors)`
+const ChipStyle = styled.span`
   border-radius: 1.1rem;
   white-space: nowrap;
   display: inline-flex;
@@ -21,15 +20,12 @@ const ChipStyle = styled(ChipColors)`
   font-size: 0.8rem;
   outline: none;
   cursor: default;
+  background-color: ${theme.colors.sub};
 `;
 
 const Content = styled.span`
   padding: 0.2rem 0.5rem;
 `;
-
-Chip.defaultProps = {
-  bgColor: 'sub',
-}
 
 Chip.propTypes = {
   children: PropTypes.node.isRequired,

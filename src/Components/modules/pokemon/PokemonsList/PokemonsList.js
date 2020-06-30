@@ -20,7 +20,7 @@ function PokemonsList() {
   return (
     <Row>
       {pokemons.map(pokemon => (
-        <Col xs="12" md="6" lg="4" xl="3" key={pokemon.id}>
+        <Col style={{ display: 'flex' }} xs="12" md="6" lg="4" xl="3" key={pokemon.id}>
           <PokemonCard pokemon={pokemon} />
         </Col>
       ))}

@@ -15,11 +15,6 @@ Icon.defaultProps = {
   children: null,
 }
 
-Icon.propTypes = {
-  children: PropTypes.node,
-  name: PropTypes.oneOf(ICON_NAMES).isRequired,
-}
-
 const ICON_COMPONENTS = {
   'arrow-up': 'ArrowUp',
   'chevron-left': 'ChevronLeft', 
@@ -27,7 +22,14 @@ const ICON_COMPONENTS = {
   x: 'X',
 }
 
-Object.keys(ICON_COMPONENTS).forEach(name => {
+const ICON_NAMES = Object.keys(ICON_COMPONENTS);
+
+Icon.propTypes = {
+  children: PropTypes.node,
+  name: PropTypes.oneOf(ICON_NAMES).isRequired,
+}
+
+ICON_NAMES.forEach(name => {
   const compName = ICON_COMPONENTS[name]
   Icon[compName] = Icons[compName]
 })

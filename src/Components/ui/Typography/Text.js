@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
-import { textBgColors } from 'Components/styles/mixins';
-
 const Text = styled.span(props => {
   return {
-    ...textBgColors(props),
     fontFamily: props.family,
     fontSize: props.size,
     fontStyle: props.italic ? 'italic' : null,
@@ -29,11 +26,9 @@ function textTransform(props) {
 }
 
 Text.defaultProps = {
-  bgColor: null,
   family: null,
   size: null,
   textAlign: null,
-  textColor: 'currentColor',
   transform: null,
   weight: null,
 }

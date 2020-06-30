@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import { shadowXs, shadowOutline } from 'Components/styles/shadows';
-import { COLORS } from 'Components/styles/colors';
+import theme from 'Components/styles/theme';
 
 function ElementStyle({ children, left, right, ...props }) {
   return (
@@ -16,11 +15,11 @@ function ElementStyle({ children, left, right, ...props }) {
 }
 
 const LeftSlot = styled.div`
-  margin-right: 8px;
+  margin-right: ${theme.gutter.form};
 `;
 
 const RightSlot = styled.div`
-  margin-left: 8px;
+  margin-left: ${theme.gutter.form};
 `;
 
 export const inputStyles = css`
@@ -31,20 +30,20 @@ export const inputStyles = css`
   outline: 0;  
   border: 1px solid;  
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  background-color: white;
+  background-color: ${theme.colors.bg};
 
   ${({ $isDisabled, $hasError, $isFocused }) => css`
     cursor: ${$isDisabled ? 'not-allowed' : 'default'};
     border-color: ${$hasError 
-      ? COLORS['danger']
-      : ($isDisabled ? '#f0f0f0' : '#80bdff')
+      ? theme.colors.danger
+      : ($isDisabled ? theme.colors.input.border.disabled : theme.colors.input.border.normal)
     };
-    box-shadow: ${$isFocused ? shadowOutline : shadowXs };
-    color: ${$hasError ? COLORS['danger'] : ($isDisabled ? COLORS['disabled'] : '#000')};    
+    box-shadow: ${$isFocused ? theme.shadows.outline : theme.shadows.xs };
+    color: ${$hasError ? theme.colors.danger : ($isDisabled ? theme.colors.disabledText : theme.colors.text)};    
 
     ${!$hasError && !$isDisabled && css`
     &:hover {    
-      border-color: #559eed;
+      border-color: ${theme.colors.input.border.hover};
     }
     `}
   `}

@@ -26,7 +26,7 @@ const FlexStyle = styled(Flex).withConfig({
     alignContent: flexDisposition(props.alignContent),
     alignItems: props.centered ? 'center' : flexDisposition(props.alignItems),
     alignSelf: flexDisposition(props.alignSelf),
-    display: props.inline ? 'inline-flex' : 'flex',
+    display: props.inline ? 'inline-flex' : props.display || 'flex',
     flex: props.fill ? '1 1 auto' : null,
     flexDirection: props.direction,
     flexWrap: props.wrap,

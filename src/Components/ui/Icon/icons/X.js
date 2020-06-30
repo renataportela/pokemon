@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import { Svg } from '~/components'
+import { Svg } from 'Components/ui';
 
 function XIcon({ children, ...props}) {
   return (
@@ -16,4 +16,4 @@ XIcon.defaultProps = {
   viewBox: '0 0 24 24',
 }
 
-export default XIcon
+export default XIcon;
