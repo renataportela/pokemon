@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Button, Col, Flex, FormField, Heading, Input, Link, Row } from 'Components/ui';
+import { Button, DeleteButton, Flex, FormField, Heading, Input } from 'Components/ui';
+import theme from 'Components/styles/theme';
 
 function EditTypes({ types, onUpdate }) {
 
@@ -20,12 +21,18 @@ function EditTypes({ types, onUpdate }) {
       <Heading size="3">Tipos</Heading>
 
       {types && types.map((type, index) => (
-        <div key={index}>
-          <button type="button" onClick={handleDelete(type)}>excluir</button>
-          <input type="text" placeholder="Tipo" value={type} onChange={handleChange(type)} /> <br />
-        </div>
+        <FormField 
+          key={index}
+          label="Descrição"
+          inputField={(
+            <Flex gap={theme.gutter.form} justify="between" alignItems="center">
+              <Input fill value={type} onChange={handleChange(type)} />
+              <DeleteButton onClick={handleDelete(type)} />
+            </Flex>
+          )}
+        />
       ))}
-      <button type="button" onClick={handleAdd}>Incluir Tipo</button><br />
+      <Button kind="secondary" size="sm" label="Incluir Tipo" onClick={handleAdd} /><br />
     </>
   );
 }

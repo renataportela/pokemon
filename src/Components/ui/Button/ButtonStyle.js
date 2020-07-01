@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import { roundShape } from 'Components/styles/mixins';
-
 import theme from 'Components/styles/theme';
 
 const PADDING = {
@@ -19,11 +17,11 @@ const ROUND_SIZES = {
   xl: '3rem',
 }
 
-const buttonVariant = props => {
+export const buttonVariant = props => {
   let styles = {
     backgroundColor: theme.colors.button.primary.color2,
     background: `linear-gradient(120deg, ${theme.colors.button.primary.color1} 8%, ${theme.colors.button.primary.color2} 55%)`,
-    color: 'white',
+    color: props.textColor || 'white',
     border: 0,
     boxShadow: theme.shadows.md,
     fontWeight: 'bold',
@@ -46,18 +44,24 @@ const buttonVariant = props => {
   };
 
   if (props.kind === 'secondary') {
-    styles.backgroundColor = theme.colors.button.secondary;
+    styles.background = theme.colors.button.secondary;
+  }
+  if (props.kind === 'ghost') {
+    styles.background = 'transparent';
+    styles.color = props.textColor || 'currentColor';
+    styles.boxShadow = null;
+    styles['&:hover'].backgroundColor = 'rgba(0, 0, 0, 0.08)'; 
+    styles['&:hover'].boxShadow = null; 
+  }
+  else if (props.kind === 'glass') {
+    styles.background = 'rgba(0, 0, 0, 0.38)';
+    styles.boxShadow = null;
   }
 
   return styles;
 }
 
-const ButtonStyle = styled(Link).attrs(props => {
-  return {
-    $diameter: ROUND_SIZES[props.size],
-    $padding: PADDING[props.size].y+' '+PADDING[props.size].x,
-  }
-})`
+export const commomCssButton = props => css`
   position: relative;
   cursor: pointer;
   outline: 0;
@@ -71,6 +75,19 @@ const ButtonStyle = styled(Link).attrs(props => {
   box-sizing: border-box;
   text-rendering: auto;
   text-decoration: none;
+  font-size: ${theme.fontSizes[props.size]};
+  transition: all .2s ease;
+`;
+
+export const normalButtonCss = props => css`
+  padding: ${PADDING[props.size].y+' '+PADDING[props.size].x};
+  border-radius: .4em;
+`;
+
+const ButtonStyle = styled.button.attrs(props => ({
+  $diameter: ROUND_SIZES[props.size],
+}))`
+  ${commomCssButton}
 
   & > svg {
     width: 1.1em;
@@ -79,9 +96,7 @@ const ButtonStyle = styled(Link).attrs(props => {
   }
 
   ${props => css`
-    font-size: ${theme.fontSizes[props.size]};
-    transition: all .2s ease;
-    ${props.round ? roundShape : [`padding: ${props.$padding};`, `border-radius: .4em;`]}
+    ${props.round ? roundShape : normalButtonCss}
     ${buttonVariant}
   `}
 `;  

@@ -10,11 +10,8 @@ import Message from './FormFieldMessage';
 function FormField({
   error,
   help,
-  fill,
   inputField,
   label,
-  value,
-  onChange,
   ...props
 }) {
   const hasError = !!error;
@@ -22,12 +19,10 @@ function FormField({
   
   const cloneInput = React.cloneElement(inputField, {
     error: hasError,
-    value,
-    onChange
   });
 
   return (
-    <Outer fill={fill} {...props}>
+    <Outer {...props}>
       {label && <Label hasError={hasError} isDisabled={disabled}>{label}</Label>}
       {cloneInput}
       {hasError && <Message kind="error">{error}</Message>}

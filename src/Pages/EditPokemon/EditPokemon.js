@@ -4,7 +4,7 @@ import { useParams, withRouter } from 'react-router-dom';
 import { usePokemonQuery, usePokemonMutation } from 'Components/modules/pokemon';
 import { EditTypes } from 'Components/modules/pokemonType';
 import { EditAttacks } from 'Components/modules/attack';
-import { Button, Col, Flex, FormField, Heading, Input, Link, Row } from 'Components/ui';
+import { Button, Col, Flex, FormField, Heading, Input, Label, Link, Row, Section } from 'Components/ui';
 
 function EditPokemon() {
   const { pokemonId } = useParams();
@@ -47,37 +47,41 @@ function EditPokemon() {
       <Heading textAlign="center" size="1">Editar Pokemon</Heading>
 
       <form onSubmit={handleSave}>
-        <Row justify="center">
-          <Col xs="12" lg="6">
-            <Heading size="3">{pokemon.name}</Heading>
+        <Row justify="center" style={{ marginTop: '20px' }}>
+          <Col xs="12" md="8" lg="6">
+            <Section>
+              <Heading size="3">{pokemon.name}</Heading>
 
-            <FormField 
-              label="Nome" 
-              inputField={<Input name="name" value={form.name} onChange={handleChange} />} 
-            />
+              <FormField 
+                label="Nome" 
+                inputField={<Input name="name" value={form.name} onChange={handleChange} />} 
+              />
 
-            <FormField 
-              label="Imagem (URL)" 
-              inputField={<Input name="image" value={form.image} onChange={handleChange} />} 
-            />
+              <FormField 
+                label="Imagem (URL)" 
+                inputField={<Input name="image" value={form.image} onChange={handleChange} />} 
+              />
+            </Section>
+            
+            <Section>
+              <EditTypes types={form.types} onUpdate={handleChangeTypes} />
+            </Section>
 
-            <br />
+            <Section>
+              <EditAttacks 
+                title="Ataques Rápidos" 
+                attacks={form.attacks && form.attacks.fast ? form.attacks.fast : []} 
+                onUpdate={handleChangeAttacks('fast')} 
+              />
+            </Section>
 
-            <EditTypes types={form.types} onUpdate={handleChangeTypes} />
-          </Col>
-          <Col xs="12" lg="6">
-
-            <EditAttacks 
-              title="Ataques Rápidos" 
-              attacks={form.attacks && form.attacks.fast ? form.attacks.fast : []} 
-              onUpdate={handleChangeAttacks('fast')} 
-            />
-
-            <EditAttacks 
-              title="Ataques Especiais" 
-              attacks={form.attacks && form.attacks.special ? form.attacks.special : []} 
-              onUpdate={handleChangeAttacks('special')} 
-            />
+            <Section>
+              <EditAttacks 
+                title="Ataques Especiais" 
+                attacks={form.attacks && form.attacks.special ? form.attacks.special : []} 
+                onUpdate={handleChangeAttacks('special')} 
+              />
+            </Section>
           </Col>
         </Row>
 

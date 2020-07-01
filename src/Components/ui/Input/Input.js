@@ -8,6 +8,7 @@ import ElementStyle from './ElementStyle';
 function Input({
   disabled,
   error,
+  fill,
   left,
   right,
   rows,
@@ -28,6 +29,7 @@ function Input({
       $isFocused={isFocused}
       left={left}
       right={right}
+      fill={fill}
     >
       <InputStyle
         $hasError={error}

@@ -18,6 +18,7 @@ Icon.defaultProps = {
 const ICON_COMPONENTS = {
   'arrow-up': 'ArrowUp',
   'chevron-left': 'ChevronLeft', 
+  delete: 'Delete',
   loader: 'Loader',
   x: 'X',
 }

@@ -11,6 +11,7 @@ function Svg({ children, color, height, viewBox, width, ...props }) {
       width={width}
       height={height}
       viewBox={viewBox}
+      fill="none"
       stroke={theme.colors[color] || color}
       strokeLinecap="round"
       strokeLinejoin="round"

@@ -5,7 +5,7 @@ import { usePokemonQuery } from 'Components/modules/pokemon';
 import { AttacksList } from 'Components/modules/attack';
 import { TypeTags } from 'Components/modules/pokemonType';
 import { PokemonImage } from 'Components/modules/pokemon';
-import { Col, Button, Heading, Link, Row } from 'Components/ui';
+import { Col, Heading, Link, LinkButton, Row } from 'Components/ui';
 
 function PokemonDetails() {
   const { pokemonId } = useParams();
@@ -29,7 +29,7 @@ function PokemonDetails() {
           {!!pokemon.attacks && <AttacksList kind="Ataques Especiais" attacks={pokemon.attacks.special} />}
 
           <div>
-          <Button label="Editar" to={`/pokemon/${pokemon.id}/editar`} />
+          <LinkButton children="Editar" to={`/pokemon/${pokemon.id}/editar`} />
           </div>
         </Col>
         

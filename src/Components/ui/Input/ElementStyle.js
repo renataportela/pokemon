@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import theme from 'Components/styles/theme';
+import { Flex } from 'Components/ui/Grid';
 
 function ElementStyle({ children, left, right, ...props }) {
   return (
@@ -22,7 +23,7 @@ const RightSlot = styled.div`
   margin-left: ${theme.gutter.form};
 `;
 
-export const inputStyles = css`
+export const inputStyles = css`  
   display: flex;
   flex-direction: row;  
   align-items: center;
@@ -49,9 +50,8 @@ export const inputStyles = css`
   `}
 `;
 
-const InputStyle = styled.div`  
+const InputStyle = styled(Flex)`  
   justify-content: space-between;
-  position: relative;
   border-radius: 4px;  
   ${inputStyles}  
 `

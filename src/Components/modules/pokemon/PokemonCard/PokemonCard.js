@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import theme from 'Components/styles/theme';
 import { TypeTags } from 'Components/modules/pokemonType';
-import { Button, Flex, Heading, Paper } from 'Components/ui';
+import { Flex, Heading, LinkButton, Paper } from 'Components/ui';
 import PokemonImage from 'Components/modules/pokemon/PokemonImage';
 
 function PokemonCard({ pokemon }) {
@@ -17,7 +17,7 @@ function PokemonCard({ pokemon }) {
         <TypeTags types={pokemon.types} />
 
         <Flex justify="end">
-          <Button label="Detalhes" to={`/pokemon/${pokemon.id}`} />
+          <LinkButton size="sm" children="Detalhes" to={`/pokemon/${pokemon.id}`} />
         </Flex>
       </Flex>
     </Box>

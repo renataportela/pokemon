@@ -23,12 +23,14 @@ const colors = {
   blue300: '#64b5f6',
   blue400: '#42a5f5',
   blue500: '#2196f3',
+  blue700: '#1976d2',
 
   cyan200: '#80deea',
 
   tealA200: '#6df9b6',
   tealA400: '#1de9b6',
   tealA700: '#00bfa5',
+  teal500: '#009688',
 
   yellow600: '#fdd835',
 };
@@ -40,7 +42,9 @@ export default {
   colors: {
     bg: '#fff',
     text: colors.grey800,
-    primary: colors.blue500,
+    primary: colors.tealA700,
+    primaryAlt: colors.teal500,
+    secondary: colors.tealA700,
     danger: colors.red600,
     sub: colors.grey300,
     disabled: colors.grey300,
@@ -61,7 +65,7 @@ export default {
         color1: colors.tealA400,
         color2: 'rgba(0,191,165,1)',
       },
-      secondary: colors.blue500,
+      secondary: colors.blueGrey500,
     }
   },
   shadows: {
@@ -77,10 +81,11 @@ export default {
   gutter: {
     grid: '15px',
     form: '8px',
+    section: '30px',
   },
   fontSizes: {
-    sm: '.7rem',
-    md: '.88rem',
+    sm: '.88rem',
+    md: '1rem',
     lg: '.98rem',
     xl: '.98rem',
   },
