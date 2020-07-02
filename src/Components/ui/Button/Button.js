@@ -16,12 +16,14 @@ function Button(
     size = 'md',
     submitting = false,
     kind = 'primary',
+    type = 'button',
     ...props
   },
   ref
 ) {
   return (
     <ButtonStyle
+      type={type}
       disabled={disabled || loading || submitting}
       hasLabel={!!label}
       kind={kind}

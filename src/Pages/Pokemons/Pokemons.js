@@ -8,7 +8,7 @@ function Pokemons() {
   return (
     <>
       <Heading size="1" textAlign="center">Pokemons</Heading>
-
+      
       <SearchByName />
       <PokemonsList />
     </>

@@ -17,50 +17,6 @@ const ROUND_SIZES = {
   xl: '3rem',
 }
 
-export const buttonVariant = props => {
-  let styles = {
-    backgroundColor: theme.colors.button.primary.color2,
-    background: `linear-gradient(120deg, ${theme.colors.button.primary.color1} 8%, ${theme.colors.button.primary.color2} 55%)`,
-    color: props.textColor || 'white',
-    border: 0,
-    boxShadow: theme.shadows.md,
-    fontWeight: 'bold',
-    '&:hover': {
-      boxShadow: theme.shadows.lg,
-      filter: 'saturate(1.3)'
-    },
-    '&:focus': {
-      boxShadow: theme.shadows.outline,
-    },
-    '&:active': {
-      boxShadow: 'none !important',
-      opacity: '0.8'
-    },
-    '&:disabled': {
-      cursor: 'not-allowed',
-      boxShadow: 'none',
-      backgroundColor: theme.colors.disabled,
-    },
-  };
-
-  if (props.kind === 'secondary') {
-    styles.background = theme.colors.button.secondary;
-  }
-  if (props.kind === 'ghost') {
-    styles.background = 'transparent';
-    styles.color = props.textColor || 'currentColor';
-    styles.boxShadow = null;
-    styles['&:hover'].backgroundColor = 'rgba(0, 0, 0, 0.08)'; 
-    styles['&:hover'].boxShadow = null; 
-  }
-  else if (props.kind === 'glass') {
-    styles.background = 'rgba(0, 0, 0, 0.38)';
-    styles.boxShadow = null;
-  }
-
-  return styles;
-}
-
 export const commomCssButton = props => css`
   position: relative;
   cursor: pointer;
@@ -71,12 +27,28 @@ export const commomCssButton = props => css`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase; 
   box-sizing: border-box;
   text-rendering: auto;
   text-decoration: none;
   font-size: ${theme.fontSizes[props.size]};
   transition: all .2s ease;
+  font-weight: bold;
+  border: 0;
+
+  &:focus {
+    box-shadow: ${theme.shadows.outline};
+  }
+
+  &:active {
+    box-shadow: none !important;
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    cursor: 'not-allowed';
+    box-shadow: none;
+    background-color: ${theme.colors.disabled};
+  }
 `;
 
 export const normalButtonCss = props => css`
@@ -84,21 +56,63 @@ export const normalButtonCss = props => css`
   border-radius: .4em;
 `;
 
+export const primaryVariant = css`
+  background-color: ${theme.colors.button.primary.bgColor2};
+  background: linear-gradient(120deg, ${theme.colors.button.primary.bgColor1} 8%, ${theme.colors.button.primary.bgColor2} 55%);
+  color: ${theme.colors.button.primary.textColor};
+  box-shadow: ${theme.shadows.md};
+  text-transform: uppercase;
+
+  :hover {
+    box-shadow: ${theme.shadows.lg};
+    filter: saturate(1.3);
+  }
+`;
+
+const secondaryVariant = props => css`
+  background-color: ${theme.colors.button.secondary.bgColor};
+  color: ${theme.colors.button.secondary.textColor};
+  color: ${!!props.textColor ? theme.colors[props.textColor] : theme.colors.button.secondary.textColor};
+
+  :hover {
+    filter: saturate(3);
+  }
+`;
+
+const ghostVariant = props => css`
+  background-color: transparent;
+  color: ${!!props.textColor ? theme.colors[props.textColor] : theme.colors.button.secondary.textColor};
+
+  :hover::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .18;
+    background-color: currentColor;
+  }
+`;
+
 const ButtonStyle = styled.button.attrs(props => ({
   $diameter: ROUND_SIZES[props.size],
 }))`
   ${commomCssButton}
 
+  ${props => css`
+    ${props.round ? roundShape : normalButtonCss}
+    ${props.kind === 'primary' && primaryVariant}
+    ${props.kind === 'secondary' && secondaryVariant}
+    ${props.kind === 'ghost' && ghostVariant}
+  `}
+
   & > svg {
     width: 1.1em;
     height: 1.1em;
     margin-right: ${props => props.hasLabel ? '.6em' : '0'};
+    stroke: currentColor;
   }
-
-  ${props => css`
-    ${props.round ? roundShape : normalButtonCss}
-    ${buttonVariant}
-  `}
 `;  
   
 export default ButtonStyle;

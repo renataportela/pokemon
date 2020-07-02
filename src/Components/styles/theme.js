@@ -32,6 +32,8 @@ const colors = {
   tealA700: '#00bfa5',
   teal500: '#009688',
 
+  green600: '#43a047',
+
   yellow600: '#fdd835',
 };
 
@@ -46,6 +48,8 @@ export default {
     primaryAlt: colors.teal500,
     secondary: colors.tealA700,
     danger: colors.red600,
+    info: colors.blue700,
+    success: colors.green600,
     sub: colors.grey300,
     disabled: colors.grey300,
     disabledText: colors.grey500,
@@ -62,10 +66,14 @@ export default {
     },
     button: {
       primary: {
-        color1: colors.tealA400,
-        color2: 'rgba(0,191,165,1)',
+        bgColor1: colors.tealA400,
+        bgColor2: 'rgba(0,191,165,1)',
+        textColor: 'white',
       },
-      secondary: colors.blueGrey500,
+      secondary: {
+        bgColor: colors.blueGrey50,
+        textColor: colors.blueGrey500
+      }
     }
   },
   shadows: {

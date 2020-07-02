@@ -11,8 +11,8 @@ function AttacksList({ kind, attacks }) {
     <Outer>
       <Heading size="3">{kind}</Heading>
       
-      {attacks.map(attack => (
-        <AttackCard key={attack.name} attack={attack} />
+      {attacks.map((attack, index) => (
+        <AttackCard key={index} attack={attack} />
       ))}
     </Outer>
   );

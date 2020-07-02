@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { commomCssButton, normalButtonCss, buttonVariant } from 'Components/ui/Button/ButtonStyle';
+import { commomCssButton, normalButtonCss, primaryVariant } from 'Components/ui/Button/ButtonStyle';
 
 const LinkButton = styled(Link)`
   ${commomCssButton}
   ${normalButtonCss}
-  ${buttonVariant}
+  ${primaryVariant}
 `;
 
 LinkButton.defaultProps = {

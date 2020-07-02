@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Col, Row } from 'Components/ui';
+import { Alert, Col, Row } from 'Components/ui';
 import { useSearchQuery } from 'Components/modules/search';
 import { PokemonCard, usePokemonsQuery } from 'Components/modules/pokemon';
 
@@ -13,7 +13,7 @@ function PokemonsList() {
 
   if (pokemons.length === 0) {
     return (
-      <div>Nenhum Pokemon encontrado.</div>
+      <Alert kind="info">Nenhum Pokemon encontrado.</Alert>
     );
   }
 

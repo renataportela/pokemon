@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, withRouter } from 'react-router-dom';
+import { Redirect, useParams, withRouter } from 'react-router-dom';
 
 import { usePokemonQuery, usePokemonMutation } from 'Components/modules/pokemon';
-import { EditTypes } from 'Components/modules/pokemonType';
-import { EditAttacks } from 'Components/modules/attack';
-import { Button, Col, Flex, FormField, Heading, Input, Label, Link, Row, Section } from 'Components/ui';
+import { generateUidTypes } from 'Components/modules/pokemonType';
+import { generateUidAttacks } from 'Components/modules/attack';
+import { PokemonForm } from 'Components/modules/pokemon';
+import { Heading, Link } from 'Components/ui';
 
 function EditPokemon() {
+  const [isUpdated, setIsUpdated] = useState(false);
   const { pokemonId } = useParams();
   const { pokemon, loading, error } = usePokemonQuery(pokemonId); 
   const { updatePokemon } = usePokemonMutation(pokemonId);
@@ -14,85 +16,53 @@ function EditPokemon() {
 
   useEffect(() => {
     if (pokemon && pokemon.id && form === null) {
-      setForm(pokemon);
+      const pokemonData = {...pokemon};
+
+      pokemonData.types = generateUidTypes(pokemonData.types);
+
+      ['fast', 'special'].forEach(kind => {
+        pokemonData.attacks[kind] = generateUidAttacks(pokemonData.attacks[kind]);
+      });
+
+      setForm(pokemonData);
     }
   }, [pokemon, form]);
 
   const handleSave = e => {
     e.preventDefault();
-    updatePokemon(form);
+    const { types, ...pokemonData } = form;
+
+    pokemonData.types = form.types.map(o => o.name);
+
+    updatePokemon(pokemonData);
+    setIsUpdated(true);
   }
 
-  const updateForm = (field, value) => {
+  const updateField = (field, value) => {
     setForm({
       ...form,
       [field]: value,
     });
   }
 
-  const handleChange = (value, e) => updateForm(e.target.name, value );
-  const handleChangeTypes = types => updateForm('types', types);
-  const handleChangeAttacks = kind => updatedAttacks => {
-    updateForm('attacks', {
-      ...form.attacks,
-      [kind]: updatedAttacks
-    });
-  }
+  const goBackRoute = `/pokemon/${pokemonId}`;
 
   if (loading || form === null) return 'Carregando...';
-  if (error) return `Ocorreu um erro: ${error}`;  
+  if (error) return `Ocorreu um erro: ${error}`;
+  if (isUpdated) return <Redirect to={goBackRoute} />;
 
   return (
     <div>
       <Heading textAlign="center" size="1">Editar Pokemon</Heading>
 
-      <form onSubmit={handleSave}>
-        <Row justify="center" style={{ marginTop: '20px' }}>
-          <Col xs="12" md="8" lg="6">
-            <Section>
-              <Heading size="3">{pokemon.name}</Heading>
+      <PokemonForm 
+        heading={<Heading size="3">{pokemon.name}</Heading>}
+        form={form}
+        onChangeField={updateField}
+        onSubmitForm={handleSave} 
+      />
 
-              <FormField 
-                label="Nome" 
-                inputField={<Input name="name" value={form.name} onChange={handleChange} />} 
-              />
-
-              <FormField 
-                label="Imagem (URL)" 
-                inputField={<Input name="image" value={form.image} onChange={handleChange} />} 
-              />
-            </Section>
-            
-            <Section>
-              <EditTypes types={form.types} onUpdate={handleChangeTypes} />
-            </Section>
-
-            <Section>
-              <EditAttacks 
-                title="Ataques Rápidos" 
-                attacks={form.attacks && form.attacks.fast ? form.attacks.fast : []} 
-                onUpdate={handleChangeAttacks('fast')} 
-              />
-            </Section>
-
-            <Section>
-              <EditAttacks 
-                title="Ataques Especiais" 
-                attacks={form.attacks && form.attacks.special ? form.attacks.special : []} 
-                onUpdate={handleChangeAttacks('special')} 
-              />
-            </Section>
-          </Col>
-        </Row>
-
-        <br />
-
-        <Flex justify="center">
-          <Button type="submit" label="Salvar" />
-        </Flex>
-      </form>
-
-      <p><Link to={`/pokemon/${pokemonId}`}>Voltar</Link></p>
+      <p><Link to={goBackRoute}>Voltar</Link></p>
     </div>
   );
 }

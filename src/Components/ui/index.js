@@ -1,5 +1,7 @@
+export { default as Alert } from './Alert';
 export { default as Button, DeleteButton } from './Button';
 export { default as Chip } from './Chip';
+export { default as Deletable } from './Deletable';
 export { default as FormField } from './FormField';
 export { default as GlobalStyles } from './GlobalStyles';
 export { default as Icon, Svg } from './Icon';

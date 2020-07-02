@@ -20,6 +20,7 @@ const ICON_COMPONENTS = {
   'chevron-left': 'ChevronLeft', 
   delete: 'Delete',
   loader: 'Loader',
+  plus: 'Plus',
   x: 'X',
 }
 
