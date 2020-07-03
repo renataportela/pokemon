@@ -1,41 +1,30 @@
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
-import { POKEMONS_QUERY } from './usePokemonsQuery';
+import { GET_POKEMON_BY_ID } from './usePokemonQuery';
 
 function usePokemonMutation(id) {
-  const [ updatePokemon ] = useMutation(SET_POKEMON);
+  const [ updatePokemon ] = useMutation(UPDATE_POKEMON);
 
   return { 
     updatePokemon: pokemonData => {
-      return updatePokemon({ variables: { data: { id, ...pokemonData } }});
+      return updatePokemon({ variables: { id, data: pokemonData }});
     },
   };
 }
 
-const SET_POKEMON = gql`
-  mutation updatePokemon($data: Pokemon!) {
-    updatePokemon(data: $data) @client
+const UPDATE_POKEMON = gql`
+  mutation updatePokemon($id: ID!, $data: Pokemon!) {
+    updatePokemon(id: $id, data: $data) @client
   }
 `;
 
-export function updatePokemonResolver(_, { data }, { cache }) {
-  const queryResult = cache.readQuery({
-    query: POKEMONS_QUERY
-  });
+export function updatePokemonResolver(_, { id, data }, { cache }) {
+  const { pokemon } = cache.readQuery({ query: GET_POKEMON_BY_ID, variables: { id } });
+  const updated = { ...pokemon, ...data };
 
-  if (queryResult) {
-    const pokemons = [...queryResult.pokemons];
-    const index = pokemons.findIndex(o => o.id === data.id);
-
-    pokemons[index] = { ...data, __typename: "Pokemon" };
-
-    cache.writeQuery({ query: POKEMONS_QUERY, data: { pokemons } });
-
-    return pokemons;
-  }
-
-  return [];
+  cache.writeData({ id, data: updated });
+  return null;
 }
 
 export default usePokemonMutation;

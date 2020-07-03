@@ -9,6 +9,7 @@ export { default as Input } from './Input';
 export { default as Label } from './Label';
 export { default as Link, LinkButton } from './Link';
 export { default as Paper } from './Paper';
+export { default as ScrollToTop } from './ScrollToTop';
 export { default as Section } from './Section';
 
 export * from './Grid';

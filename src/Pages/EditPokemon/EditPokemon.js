@@ -5,7 +5,7 @@ import { usePokemonQuery, usePokemonMutation } from 'Components/modules/pokemon'
 import { generateUidTypes } from 'Components/modules/pokemonType';
 import { generateUidAttacks } from 'Components/modules/attack';
 import { PokemonForm } from 'Components/modules/pokemon';
-import { Heading, Link } from 'Components/ui';
+import { Heading, Link, ScrollToTop } from 'Components/ui';
 
 function EditPokemon() {
   const [isUpdated, setIsUpdated] = useState(false);
@@ -53,6 +53,8 @@ function EditPokemon() {
 
   return (
     <div>
+      <ScrollToTop />
+      
       <Heading textAlign="center" size="1">Editar Pokemon</Heading>
 
       <PokemonForm 
@@ -62,7 +64,9 @@ function EditPokemon() {
         onSubmitForm={handleSave} 
       />
 
-      <p><Link to={goBackRoute}>Voltar</Link></p>
+      <br />
+
+      <Link to={goBackRoute}>Voltar</Link>
     </div>
   );
 }

@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${theme.colors.text};
     background-color: ${theme.colors.bg};
     padding-top: 40px;
+    padding-bottom: 40px;
   }
 `
 

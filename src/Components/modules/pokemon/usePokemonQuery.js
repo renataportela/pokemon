@@ -11,27 +11,34 @@ function usePokemonQuery(id) {
   };
 }
 
-const GET_POKEMON_BY_ID = gql`
-  query pokemon($id: String!) {
-    pokemon(id: $id) {
-      id
-      name
-      image
-      types
-      attacks {
-        fast {
-          name
-          type
-          damage
-        }
-        special {
-          name
-          type
-          damage
-        }
+export const POKEMON_DATA = gql`
+  fragment PokemonData on Pokemon {
+    id
+    name
+    image
+    types
+    attacks {
+      fast {
+        name
+        type
+        damage
+      }
+      special {
+        name
+        type
+        damage
       }
     }
   }
+`;
+
+export const GET_POKEMON_BY_ID = gql`
+  query pokemon($id: String!) @client {
+    pokemon(id: $id) {
+      ...PokemonData
+    }
+  }
+  ${POKEMON_DATA}
 `;
 
 export default usePokemonQuery;

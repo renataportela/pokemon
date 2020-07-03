@@ -5,7 +5,7 @@ import { usePokemonQuery } from 'Components/modules/pokemon';
 import { AttacksList } from 'Components/modules/attack';
 import { TypeTags } from 'Components/modules/pokemonType';
 import { PokemonImage } from 'Components/modules/pokemon';
-import { Col, Heading, Link, LinkButton, Row } from 'Components/ui';
+import { Col, Heading, Link, LinkButton, Row, ScrollToTop } from 'Components/ui';
 
 function PokemonDetails() {
   const { pokemonId } = useParams();
@@ -16,6 +16,8 @@ function PokemonDetails() {
 
   return (
     <>
+      <ScrollToTop />
+
       <Heading textAlign="center" size="1">{pokemon.name}</Heading>
 
       <TypeTags types={pokemon.types} justify="center" />
@@ -34,6 +36,8 @@ function PokemonDetails() {
         </Col>
         
       </Row>
+
+      <br />
 
       <Link to="/">Voltar</Link>
     </>

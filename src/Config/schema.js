@@ -13,12 +13,13 @@ export const typeDefs = gql`
 
   extend type Mutation {
     setSearch(name: String!): String!
+    updatePokemon(id: ID!, data: Pokemon!): null
   }
 `;
 
 export const resolvers = {
   Mutation: {
     setSearch: setSearchResolver,
-    updatePokemon: updatePokemonResolver,  
+    updatePokemon: updatePokemonResolver,
   }
 };
