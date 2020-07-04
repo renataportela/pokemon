@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, useParams, withRouter } from 'react-router-dom';
 
-import { usePokemonQuery, usePokemonMutation } from 'Components/modules/pokemon';
-import { generateUidTypes } from 'Components/modules/pokemonType';
-import { generateUidAttacks } from 'Components/modules/attack';
-import { PokemonForm } from 'Components/modules/pokemon';
-import { Heading, Link, ScrollToTop } from 'Components/ui';
+import { Heading, Link, ScrollToTop } from 'Components/common/ui';
+import { usePokemonQuery, usePokemonMutation } from 'Components/pokemon';
+import { generateUidAttacks } from 'Components/attacks';
+import { generateUidTypes } from 'Components/pokemonTypes';
+import { PokemonForm } from 'Components/pokemon';
 
 function EditPokemon() {
   const [isUpdated, setIsUpdated] = useState(false);

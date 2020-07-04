@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 
-import routes from 'Config/routes';
-import client from 'Config/apolloClient';
-import Layout from 'Components/layout/Layout';
+import routes from 'Routes';
+import client from 'Store/apolloClient';
+import Layout from 'Components/common/layout';
 
 function App() {
   return (

@@ -20,6 +20,15 @@
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
+"@apollo/react-testing@^3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@apollo/react-testing/-/react-testing-3.1.4.tgz#f2e1b9b65a0bd773facf54db4fdb5995d162a72a"
+  integrity sha512-1eKjN36UfIAnBVmfLbl12vQ/eCjTqYdaU95chGIQzT2uHd5BnasJu0z+MwXBrEs57A9WY9mFvLZxdjzQJXaacA==
+  dependencies:
+    "@apollo/react-common" "^3.1.4"
+    fast-json-stable-stringify "^2.0.0"
+    tslib "^1.10.0"
+
 "@babel/code-frame@7.8.3", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
@@ -1489,10 +1498,12 @@
     "@babel/runtime" "^7.10.3"
     "@testing-library/dom" "^7.17.1"
 
-"@testing-library/user-event@^7.1.2":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-7.2.1.tgz#2ad4e844175a3738cb9e7064be5ea070b8863a1c"
-  integrity sha512-oZ0Ib5I4Z2pUEcoo95cT1cr6slco9WY7yiPpG+RGNkj8YcYgJnM7pXmYmorNOReh8MIGcKSqXyeGjxnr8YiZbA==
+"@testing-library/user-event@^12.0.11":
+  version "12.0.11"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-12.0.11.tgz#157594e6c6d73a1503003933177843648b8c7da4"
+  integrity sha512-r7QNfktLE2n8IODEl32orup/HNOMueJpoXRDeTMlvWR4nZIHJwx59+8SkLf6nqV4Ot5Xo6qNeaWrvC1KO4eOng==
+  dependencies:
+    "@babel/runtime" "^7.10.2"
 
 "@types/babel__core@^7.1.0":
   version "7.1.6"

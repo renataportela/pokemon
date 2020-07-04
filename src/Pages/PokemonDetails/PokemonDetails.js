@@ -1,11 +1,10 @@
 import React from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 
-import { usePokemonQuery } from 'Components/modules/pokemon';
-import { AttacksList } from 'Components/modules/attack';
-import { TypeTags } from 'Components/modules/pokemonType';
-import { PokemonImage } from 'Components/modules/pokemon';
-import { Col, Heading, Link, LinkButton, Row, ScrollToTop } from 'Components/ui';
+import { Col, Heading, Link, LinkButton, Row, ScrollToTop } from 'Components/common/ui';
+import { AttacksList } from 'Components/attacks';
+import { TypeTags } from 'Components/pokemonTypes';
+import { PokemonImage, usePokemonQuery } from 'Components/pokemon';
 
 function PokemonDetails() {
   const { pokemonId } = useParams();

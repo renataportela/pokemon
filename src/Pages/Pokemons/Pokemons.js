@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Heading } from 'Components/ui';
-import { PokemonsList } from 'Components/modules/pokemon';
-import { SearchByName } from 'Components/modules/search';
+import { Heading } from 'Components/common/ui';
+import { PokemonsList } from 'Components/pokemon';
+import { SearchByName } from 'Components/search';
 
 function Pokemons() {
   return (
