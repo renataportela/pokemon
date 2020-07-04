@@ -23,7 +23,7 @@ function FormField({
 
   return (
     <Outer {...props}>
-      {label && <Label htmlFor={props.inputField.name} hasError={hasError} isDisabled={disabled}>{label}</Label>}
+      {label && <Label htmlFor={inputField.name} hasError={hasError} isDisabled={disabled}>{label}</Label>}
       {cloneInput}
       {hasError && <Message kind="error">{error}</Message>}
       {!!help && <Message kind="hint">{help}</Message>}
