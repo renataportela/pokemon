@@ -12,7 +12,7 @@ function useSearchQuery() {
 }
 
 export const GET_SEARCH_POKEMON = gql`
-  query {
+  {
     search @client
   }
 `;

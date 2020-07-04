@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import { updatePokemonResolver } from 'Components/pokemon';
 import { setSearchResolver } from 'Components/search';
 
-export const initialData = {
+export const initialState = {
   search: '',
 };
 

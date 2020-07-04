@@ -1,7 +1,7 @@
 import ApolloClient from 'apollo-boost';
 import { InMemoryCache, defaultDataIdFromObject } from 'apollo-cache-inmemory';
 
-import { typeDefs, resolvers, initialData } from './schema';
+import { typeDefs, resolvers, initialState } from './schema';
 
 const cache = new InMemoryCache({
   dataIdFromObject: object => {
@@ -30,7 +30,7 @@ const client = new ApolloClient({
 });
 
 cache.writeData({
-  data: initialData
+  data: initialState
 });
 
 export default client;

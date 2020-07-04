@@ -1,6 +1,8 @@
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
+import { POKEMON_DATA } from './pokemonFragment';
+
 function usePokemonQuery(id) {
   const { loading, error, data } = useQuery(GET_POKEMON_BY_ID, { variables: { id }});
 
@@ -11,29 +13,8 @@ function usePokemonQuery(id) {
   };
 }
 
-export const POKEMON_DATA = gql`
-  fragment PokemonData on Pokemon {
-    id
-    name
-    image
-    types
-    attacks {
-      fast {
-        name
-        type
-        damage
-      }
-      special {
-        name
-        type
-        damage
-      }
-    }
-  }
-`;
-
 export const GET_POKEMON_BY_ID = gql`
-  query pokemon($id: String!) @client {
+  query pokemon($id: String!) {
     pokemon(id: $id) {
       ...PokemonData
     }

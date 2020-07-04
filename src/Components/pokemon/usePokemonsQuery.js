@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
-import { POKEMON_DATA } from 'Components/pokemon/usePokemonQuery';
+import { POKEMON_DATA } from './pokemonFragment';
 
 function usePokemonsQuery(searchFor) {
   const { loading, error, data } = useQuery(GET_POKEMONS, { variables: { first: 151 }});
